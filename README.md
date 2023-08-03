@@ -19,7 +19,7 @@ GeneRegulate is a powerful web tool that allows you to analyze gene regulatory e
 
 4. **Visualization:** The tool presents your results in user-friendly formats, including tables and graphs. You can choose the visualization that suits your preference, making complex data easier to understand.
 
-### Important Note: The processing of files is currently not integrated into Flask due to ongoing edits. We are actively working on identifying and solving the errors, as we are trying to make it better in terms of the run time Once it is completed, this feature will be included in flask.py.
+### Important Note: The processing of files is currently not integrated into Flask due to ongoing edits. We are actively working on identifying and solving the errors, as we are trying to make it better in terms of the run time Once it is completed, this feature will be included in routes.py.
 
 ### Why GeneRegulate Matters
 
