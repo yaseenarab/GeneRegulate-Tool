@@ -51,7 +51,10 @@ def chose_the_organ():
 @app.route('/form')
 def form():
     uploaded_files = session.get('uploaded_files')
-
+  
+    # prossisng the file will go over here it is now not there as we delete it so that we can 
+    # solve the runtime problem that we are facing, as it is taking more than 2 mints to run the
+    # file and we are trying diffrent way to make it run faster.
 
     if uploaded_files:
         return render_template('form.html', uploaded_files=uploaded_files, title='Data Results')
