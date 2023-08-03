@@ -198,7 +198,9 @@ if sillincer:
             gene_name2, silin2 = line.strip().split('\t')
             cur.execute("update file_result set silin = %s where gene_name = %s",(silin2,gene_name2))
             print("s")
+          
 #end
+
 
 con.commit()
 con.close()
