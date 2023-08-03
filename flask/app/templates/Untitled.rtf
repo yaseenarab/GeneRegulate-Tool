@@ -1,0 +1,108 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html>\
+<head>\
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>\
+  <style>\
+    /* CSS styles for the page */\
+    body \{\
+      font-family: Arial, sans-serif;\
+    \}\
+\
+    #graph-container \{\
+      margin-top: 20px;\
+    \}\
+  </style>\
+</head>\
+<body>\
+  <h1>Graph Selection</h1>\
+  \
+  <label for="graph-select">Select Graph:</label>\
+  <select id="graph-select">\
+    <option value="graph1">Graph 1</option>\
+    <option value="graph2">Graph 2</option>\
+    <option value="graph3">Graph 3</option>\
+  </select>\
+  \
+  <table>\
+    <tr>\
+      <th>gene id</th>\
+      <th>#enhancer</th>\
+      <th># sillincer </th>\
+    </tr>\
+    <tr>\
+      <td>LGMD2B</td>\
+      <td> 2</td>\
+      <td> 3</td>\
+    </tr>\
+    <tr>\
+      <td>LGMD3B</td>\
+      <td> 5</td>\
+      <td> 6</td>\
+    </tr>\
+    <tr>\
+      <td>CDCD1</td>\
+      <td> 8</td>\
+      <td> 9</td>\
+    </tr>\
+  </table>\
+  \
+  <div id="graph-container"></div>\
+\
+  <script>\
+    // JavaScript code for handling graph selection and rendering\
+\
+    // Sample data for the graphs\
+    var graphData = \{\
+      graph1: \{\
+        x: [1, 2, 3],\
+        y: [4, 5, 6],\
+        type: 'bar',\
+        name: 'Graph 1'\
+      \},\
+      graph2: \{\
+        x: [1, 2, 3],\
+        y: [7, 8, 9],\
+        type: 'scatter',\
+        name: 'Graph 2'\
+      \},\
+      graph3: \{\
+        x: [1, 2, 3],\
+        y: [10, 11, 12],\
+        type: 'line',\
+        name: 'Graph 3'\
+      \}\
+    \};\
+\
+    // Function to render the selected graph\
+    function renderGraph() \{\
+      var graphSelect = document.getElementById("graph-select");\
+      var selectedGraph = graphSelect.value;\
+\
+      var data = [graphData[selectedGraph]];\
+\
+      var layout = \{\
+        title: selectedGraph,\
+        showlegend: true\
+      \};\
+\
+      Plotly.newPlot('graph-container', data, layout);\
+    \}\
+\
+    // Add event listener to the graph select dropdown\
+    var graphSelect = document.getElementById("graph-select");\
+    graphSelect.addEventListener("change", renderGraph);\
+\
+    // Initial rendering of the default graph\
+    renderGraph();\
+  </script>\
+</body>\
+</html>\
+\
+}

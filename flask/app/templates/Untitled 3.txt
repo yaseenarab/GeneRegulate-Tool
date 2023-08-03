@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+<style>
+  /* Styling for the file upload container */
+  .file-upload-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* Styling for the file upload input */
+  .file-upload-input {
+    display: none;
+  }
+
+  /* Styling for the file upload label */
+  .file-upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .file-upload-label:hover {
+    background-color: #2980b9;
+  }
+
+  /* Styling for the example image */
+  .example-image {
+    width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
+{% block content %}
+<head>
+  <title>Upload File Example</title>
+</head>
+
+<body>
+<h1>Upload File Example</h1>
+
+<form id="uploadForm">
+  <div class="file-upload-container">
+    <input type="file" id="fileUpload" class="file-upload-input" accept=".txt, .csv">
+    <label for="fileUpload" class="file-upload-label">Upload File</label>
+  </div>
+
+  <div id="confirmationMessage"></div>
+
+  <button type="submit" id="submitButton">Submit</button>
+</form>
+
+<img class="example-image" id="uploadedImage" src="{{url_for('static', filename='file.png')}}" alt="File Example">
+
+<script>
+  var fileUploadInput = document.getElementById('fileUpload');
+  var submitButton = document.getElementById('submitButton');
+  var uploadedImage = document.getElementById('uploadedImage');
+
+  fileUploadInput.addEventListener('change', handleFileUpload, false);
+  submitButton.addEventListener('click', handleFormSubmit, false);
+
+  function handleFileUpload(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      var fileContent = e.target.result;
+      console.log('File Content:', fileContent);
+
+      // Display the uploaded file as an image
+      uploadedImage.src = URL.createObjectURL(file);
+
+      // Display the confirmation message
+      var confirmationMessage = document.getElementById('confirmationMessage');
+      confirmationMessage.textContent = 'File uploaded successfully!';
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    var form = document.getElementById('uploadForm');
+
+    // Perform additional processing or submit the form data here
+    form.submit();
+  }
+</script>
+</body>
+{% endblock %}
+
